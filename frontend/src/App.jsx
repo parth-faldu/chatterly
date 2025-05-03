@@ -5,11 +5,11 @@ import { Signup } from "./pages/SignUp.jsx";
 import { Login } from "./pages/Login";
 import { Settings } from "./pages/Settings";
 import { Profile } from "./pages/Profile";
-import { useAuthStore } from "./store/UseAuthStore";
 import { useEffect } from "react";
 import { Loader } from "lucide-react";
 import { Toaster } from "react-hot-toast";
 import { useThemeStore } from "./store/useThemeStore";
+import { useAuthStore } from "./store/UseAuthStore.jsx";
 
 const App = () => {
   const { authUser, checkAuth, isCheckingAuth, onlineUsers } = useAuthStore();
