@@ -25,20 +25,6 @@ app.use(
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
-if (app._router && app._router.stack) {
-  app._router.stack.forEach((middleware) => {
-    if (middleware.route) {
-      console.log("Route:", middleware.route.path);
-    } else if (middleware.name === "router") {
-      middleware.handle.stack.forEach((handler) => {
-        if (handler.route) {
-          console.log("Route:", handler.route.path);
-        }
-      });
-    }
-  });
-}
-
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/dist")));
   app.get("*", (req, res) => {
