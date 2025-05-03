@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
-import { Home } from "./pages/Home";
-import { Signup } from "./pages/Signup";
+import { Home } from "./pages/Home.jsx";
+import { Signup } from "./pages/SignUp.jsx";
 import { Login } from "./pages/Login";
 import { Settings } from "./pages/Settings";
 import { Profile } from "./pages/Profile";
@@ -12,7 +12,7 @@ import { Toaster } from "react-hot-toast";
 import { useThemeStore } from "./store/useThemeStore";
 
 const App = () => {
-  const { authUser, checkAuth, isCheckingAuth ,onlineUsers} = useAuthStore();
+  const { authUser, checkAuth, isCheckingAuth, onlineUsers } = useAuthStore();
 
   const { theme } = useThemeStore();
   useEffect(() => {

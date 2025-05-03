@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useAuthStore } from "../store/UseAuthStore";
+import { useAuthStore } from "../store/UseAuthStore.jsx";
 import { Link } from "react-router-dom";
 import {
   Eye,
