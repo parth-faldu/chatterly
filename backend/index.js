@@ -16,14 +16,9 @@ const __dirname = path.resolve();
 app.use(express.json());
 app.use(cookieParser());
 
-const allowedOrigins = [
-  "http://localhost:5173",
-  process.env.VITE_CORS_ORIGIN,
-].filter(Boolean);
-
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: ["http://localhost:5173", process.env.VITE_CORS_ORIGIN],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
