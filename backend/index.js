@@ -11,20 +11,14 @@ import path from "path";
 dotenv.config();
 
 const PORT = process.env.PORT;
-const __filename = path.resolve();
+const __dirname = path.resolve();
 
 app.use(express.json());
 app.use(cookieParser());
 
-const allowedOrigins = [
-  "http://localhost:5173",
-  process.env.VITE_CORS_ORIGIN,
-].filter(Boolean);
-
 app.use(
   cors({
-    origin: allowedOrigins,
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    origin: "http://localhost:5173",
     credentials: true,
   })
 );
@@ -33,9 +27,9 @@ app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__filename, "../frontend/dist")));
+  app.use(express.static(path.join(__dirname, "../frontend/dist")));
   app.get("*", (req, res) => {
-    res.sendFile(path.join(__filename, "../frontend", "dist", "index.html"));
+    res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
   });
 }
 
