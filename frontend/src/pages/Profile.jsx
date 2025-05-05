@@ -11,6 +11,11 @@ export const Profile = () => {
     const maxSizeInBytes = maxSizeMB * 1024 * 1024;
     if (!file) return;
 
+    if (!file.type.startsWith("image/")) {
+      toast.error("Please select an image file.");
+      return;
+    }
+
     if (file.size > maxSizeInBytes) {
       toast.error("Image size too large");
       return;
