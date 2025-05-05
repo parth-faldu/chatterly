@@ -9,18 +9,17 @@ export const Profile = () => {
     const file = e.target.files[0];
     const maxSizeMB = 10;
     const maxSizeInBytes = maxSizeMB * 1024 * 1024;
+    if (!file) return;
 
     if (file.size > maxSizeInBytes) {
       toast.error("Image size too large");
       return;
     }
 
-    if (!file) return;
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = async () => {
       const base64Image = reader.result;
-      console.log("base64Image: ", base64Image);
       setSelectedImg(base64Image);
       await updateProfile({ profilePic: base64Image });
     };

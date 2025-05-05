@@ -11,9 +11,15 @@ export const MessageInput = () => {
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
+    const maxSizeMB = 10;
+    const maxSizeInBytes = maxSizeMB * 1024 * 1024;
 
     if (!file.type.startsWith("image/")) {
       toast.error("Please select an image file.");
+      return;
+    }
+    if (file.size > maxSizeInBytes) {
+      toast.error("Image size too large");
       return;
     }
     const reader = new FileReader();
