@@ -49,7 +49,7 @@ CLOUDINARY_API_KEY=
 
 CLOUDINARY_API_SECRET=
 
-NODE_ENV=development
+NODE_ENV=production
 ```
 
 ## Installation
